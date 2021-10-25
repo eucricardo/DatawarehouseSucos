@@ -11,11 +11,23 @@
   DTS:LocaleID="1046"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{C2721BB9-122E-4798-8358-8F71D1ACB9B9}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{B5872358-DA86-4B8D-91A1-A862029962ED}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Gerenciador de Conexões do Excel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{C9C91B9A-C1CB-491E-BD24-E317748E2442}"
+      DTS:ObjectName="Gerenciador de Conexões do Excel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Projetos\Dados\CADASTRO DE CLIENTES.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[RICARDOEUCL6830]"
       DTS:CreationName="OLEDB"
@@ -55,7 +67,210 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
-          version="1" />
+          version="1">
+          <components>
+            <component
+              refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Origem do Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;1"
+              description="Origem do Excel"
+              name="Planilha Clientes"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowset">CLIENTES$</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="O comando SQL a ser executado."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="A variável que contém o comando SQL a ser executado."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o modo usado para acessar o banco de dados."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="O mapeamento de parâmetros no comando SQL para variáveis."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Gerenciador de Conexões do Excel]"
+                  connectionManagerRefId="Package.ConnectionManagers[Gerenciador de Conexões do Excel]"
+                  description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel]"
+                  name="Saída de Origem do Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].Columns[ID_CLIENTE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[ID_CLIENTE]"
+                      lineageId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].Columns[ID_CLIENTE]"
+                      name="ID_CLIENTE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].Columns[CLIENTE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[CLIENTE]"
+                      length="255"
+                      lineageId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].Columns[CLIENTE]"
+                      name="CLIENTE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].Columns[ENDERECO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[ENDERECO]"
+                      length="255"
+                      lineageId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].Columns[ENDERECO]"
+                      name="ENDERECO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].Columns[VENDEDOR]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[VENDEDOR]"
+                      lineageId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].Columns[VENDEDOR]"
+                      name="VENDEDOR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].Columns[NOME VENDEDOR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[NOME VENDEDOR]"
+                      length="255"
+                      lineageId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].Columns[NOME VENDEDOR]"
+                      name="NOME VENDEDOR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].Columns[SEGMENTO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[SEGMENTO]"
+                      length="255"
+                      lineageId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].Columns[SEGMENTO]"
+                      name="SEGMENTO"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[ID_CLIENTE]"
+                      dataType="r8"
+                      name="ID_CLIENTE" />
+                    <externalMetadataColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[CLIENTE]"
+                      dataType="wstr"
+                      length="255"
+                      name="CLIENTE" />
+                    <externalMetadataColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[ENDERECO]"
+                      dataType="wstr"
+                      length="255"
+                      name="ENDERECO" />
+                    <externalMetadataColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[VENDEDOR]"
+                      dataType="r8"
+                      name="VENDEDOR" />
+                    <externalMetadataColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[NOME VENDEDOR]"
+                      dataType="wstr"
+                      length="255"
+                      name="NOME VENDEDOR" />
+                    <externalMetadataColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[SEGMENTO]"
+                      dataType="wstr"
+                      length="255"
+                      name="SEGMENTO" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Erro de Origem do Excel]"
+                  isErrorOut="true"
+                  name="Saída de Erro de Origem do Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[ID_CLIENTE]"
+                      dataType="r8"
+                      lineageId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[ID_CLIENTE]"
+                      name="ID_CLIENTE" />
+                    <outputColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[CLIENTE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[CLIENTE]"
+                      name="CLIENTE" />
+                    <outputColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[ENDERECO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[ENDERECO]"
+                      name="ENDERECO" />
+                    <outputColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[VENDEDOR]"
+                      dataType="r8"
+                      lineageId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[VENDEDOR]"
+                      name="VENDEDOR" />
+                    <outputColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[NOME VENDEDOR]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[NOME VENDEDOR]"
+                      name="NOME VENDEDOR" />
+                    <outputColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[SEGMENTO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[SEGMENTO]"
+                      name="SEGMENTO" />
+                    <outputColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CRIA_DIM_CLIENTE\Planilha Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+        </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -879,15 +1094,40 @@ SELECT'003' AS CODIGO, 'Fábrica Minas Gerais' AS DESCRITOR</property>
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
           Size="185,42"
-          Id="Package\CRIA_DIM_FABRICA"
-          TopLeft="50,75" />
-        <NodeLayout
-          Size="185,42"
           Id="Package\CRIA_DIM_CLIENTE"
           TopLeft="49,191" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\CRIA_DIM_FABRICA"
+          TopLeft="50,75" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\CRIA_DIM_CLIENTE">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\CRIA_DIM_CLIENTE\Planilha Clientes"
+          TopLeft="44,30" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\CRIA_DIM_CLIENTE\Planilha Clientes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\CRIA_DIM_FABRICA">
     <LayoutInfo>
